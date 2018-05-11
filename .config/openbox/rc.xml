@@ -1,0 +1,561 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openbox_config xmlns="http://openbox.org/3.4/rc" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <resistance>
+    <strength>10</strength>
+    <screen_edge_strength>20</screen_edge_strength>
+  </resistance>
+  <focus>
+    <focusNew>yes</focusNew>
+    <followMouse>yes</followMouse>
+    <focusLast>no</focusLast>
+    <underMouse>yes</underMouse>
+    <focusDelay>0</focusDelay>
+    <raiseOnFocus>no</raiseOnFocus>
+  </focus>
+  <placement>
+    <policy>UnderMouse</policy>
+    <center>yes</center>
+    <monitor>Mouse</monitor>
+    <primaryMonitor>1</primaryMonitor>
+  </placement>
+  <theme>
+    <name>lain</name>
+    <titleLayout>C</titleLayout>
+    <cornerRadius>4</cornerRadius>
+    <keepBorder>yes</keepBorder>
+    <animateIconify>no</animateIconify>
+    <font place="ActiveWindow">
+      <name>t cherry Wide</name>
+      <size>9</size>
+      <weight>Normal</weight>
+      <slant>Normal</slant>
+    </font>
+    <font place="InactiveWindow">
+      <name>t cherry Wide</name>
+      <size>9</size>
+      <weight>Normal</weight>
+      <slant>Normal</slant>
+    </font>
+    <font place="MenuHeader">
+      <name>t cherry Wide</name>
+      <size>8</size>
+      <weight>Normal</weight>
+      <slant>Normal</slant>
+    </font>
+    <font place="MenuItem">
+      <name>t cherry Wide</name>
+      <size>8</size>
+      <weight>Normal</weight>
+      <slant>Normal</slant>
+    </font>
+    <font place="ActiveOnScreenDisplay">
+      <name/>
+      <size>8</size>
+      <weight/>
+      <slant/>
+    </font>
+    <font place="InactiveOnScreenDisplay">
+      <name>Sans</name>
+      <size>8</size>
+      <weight/>
+      <slant/>
+    </font>
+  </theme>
+  <desktops>
+    <number>4</number>
+    <firstdesk>1</firstdesk>
+    <names>
+      <name>1</name>
+      <name>2</name>
+      <name>3</name>
+      <name>4</name>
+    </names>
+    <popupTime>0</popupTime>
+  </desktops>
+  <resize>
+    <drawContents>yes</drawContents>
+    <popupShow>Never</popupShow>
+    <popupPosition>Center</popupPosition>
+    <popupFixedPosition>
+      <x>10</x>
+      <y>10</y>
+    </popupFixedPosition>
+  </resize>
+  <margins>
+    <top>10</top>
+    <bottom>50</bottom>
+    <left>10</left>
+    <right>10</right>
+  </margins>
+  <keyboard>
+    <chainQuitKey>C-g</chainQuitKey>
+    <!-- Go to desktop by number -->
+    <keybind key="W-1">
+      <action name="GoToDesktop">
+        <to>1</to>
+      </action>
+    </keybind>
+    <keybind key="W-2">
+      <action name="GoToDesktop">
+        <to>2</to>
+      </action>
+    </keybind>
+    <keybind key="W-3">
+      <action name="GoToDesktop">
+        <to>3</to>
+      </action>
+    </keybind>
+    <keybind key="W-4">
+      <action name="GoToDesktop">
+        <to>4</to>
+      </action>
+    </keybind>
+    <!-- Send program to desktop by number -->
+    <keybind key="W-S-1">
+      <action name="SendToDesktop">
+        <to>1</to>
+        <wrap>no</wrap>
+        <follow>no</follow>
+      </action>
+    </keybind>
+    <keybind key="W-S-2">
+      <action name="SendToDesktop">
+        <to>2</to>
+        <wrap>no</wrap>
+        <follow>no</follow>
+      </action>
+    </keybind>
+    <keybind key="W-S-3">
+      <action name="SendToDesktop">
+        <to>3</to>
+        <wrap>no</wrap>
+        <follow>no</follow>
+      </action>
+    </keybind>
+    <keybind key="W-S-4">
+      <action name="SendToDesktop">
+        <to>4</to>
+        <wrap>no</wrap>
+        <follow>no</follow>
+      </action>
+    </keybind>
+    <keybind key="W-f">
+      <action name="ToggleMaximize"/>
+    </keybind>
+    <keybind key="W-m">
+      <action name="ToggleFullscreen"/>
+    </keybind>
+    <keybind key="W-q">
+      <action name="Close"/>
+    </keybind>
+    <keybind key="A-Tab">
+      <action name="NextWindow">
+        <dialog>none</dialog>
+        <finalactions>
+          <action name="Focus"/>
+          <action name="Raise"/>
+          <action name="Unshade"/>
+        </finalactions>
+      </action>
+    </keybind>
+    <!-- Keybindings for running applications -->
+    <keybind key="W-Return">
+      <action name="Execute">
+        <command>urxvtc</command>
+      </action>
+    </keybind>
+    <keybind key="W-d">
+      <action name="Execute">
+        <name>rofi</name>
+        <command>rofi -show run</command>
+      </action>
+    </keybind>
+    <keybind key="W-c">
+      <action name="MoveToCenter"/>
+    </keybind>
+    <keybind key="W-P">
+      <action name="Execute">
+        <command>shot</command>
+      </action>
+    </keybind>
+    <!-- "Tiling" keybinds -->
+    <!-- Grow to edge -->
+    <keybind key="W-Right">
+      <action name="GrowToEdgeEast"/>
+    </keybind>
+    <keybind key="W-Left">
+      <action name="GrowToEdgeWest"/>
+    </keybind>
+    <keybind key="W-Down">
+      <action name="GrowToEdgeSouth"/>
+    </keybind>
+    <keybind key="W-Up">
+      <action name="GrowToEdgeNorth"/>
+    </keybind>
+    <!-- Move and resize -->
+    <keybind key="W-KP_4">
+      <!-- MoveResizeTo Left half of screen -->
+      <action name="UnmaximizeFull"/>
+      <action name="MaximizeVert"/>
+      <action name="Raise"/>
+      <action name="MoveResizeTo">
+        <width>50%</width>
+        <x>0</x>
+        <y>0</y>
+      </action>
+    </keybind>
+    <keybind key="W-KP_6">
+      <!--MoveResizeTo Right half of screen -->
+      <action name="UnmaximizeFull"/>
+      <action name="MaximizeVert"/>
+      <action name="Raise"/>
+      <action name="MoveResizeTo">
+        <width>50%</width>
+        <x>50%</x>
+        <y>0</y>
+      </action>
+    </keybind>
+    <keybind key="W-KP_8">
+      <!--MoveResizeTo Top half of screen -->
+      <action name="UnmaximizeFull"/>
+      <action name="Raise"/>
+      <action name="MoveResizeTo">
+        <x>0</x>
+        <y>0</y>
+        <width>100%</width>
+        <height>50%</height>
+      </action>
+    </keybind>
+    <keybind key="W-KP_2">
+      <!--MoveResizeTo Bottom half of screen -->
+      <action name="UnmaximizeFull"/>
+      <action name="Raise"/>
+      <action name="MoveResizeTo">
+        <x>0</x>
+        <y>50%</y>
+        <width>100%</width>
+        <height>50%</height>
+      </action>
+    </keybind>
+    <keybind key="W-KP_7">
+      <!--MoveResizeTo Top left quarter -->
+      <action name="UnmaximizeFull"/>
+      <action name="Raise"/>
+      <action name="MoveResizeTo">
+        <x>0</x>
+        <y>0</y>
+        <width>50%</width>
+        <height>50%</height>
+      </action>
+    </keybind>
+    <keybind key="W-KP_9">
+      <!--MoveResizeTo Top right quarter -->
+      <action name="UnmaximizeFull"/>
+      <action name="Raise"/>
+      <action name="MoveResizeTo">
+        <x>50%</x>
+        <y>0</y>
+        <width>50%</width>
+        <height>50%</height>
+      </action>
+    </keybind>
+    <keybind key="W-KP_1">
+      <!--MoveResizeTo Bottom left quarter -->
+      <action name="UnmaximizeFull"/>
+      <action name="Raise"/>
+      <action name="MoveResizeTo">
+        <x>0</x>
+        <y>50%</y>
+        <width>50%</width>
+        <height>50%</height>
+      </action>
+    </keybind>
+    <keybind key="W-KP_3">
+      <!--MoveResizeTo Bottom right quarter -->
+      <action name="UnmaximizeFull"/>
+      <action name="Raise"/>
+      <action name="MoveResizeTo">
+        <x>50%</x>
+        <y>50%</y>
+        <width>50%</width>
+        <height>50%</height>
+      </action>
+    </keybind>
+    <keybind key="W-KP_0">
+      <!--MoveResizeTo Scratchpad corner -->
+      <action name="UnmaximizeFull"/>
+      <action name="Raise"/>
+      <action name="MoveResizeTo">
+        <x>0%</x>
+        <y>0%</y>
+        <width>20%</width>
+        <height>20%</height>
+      </action>
+    </keybind>
+    <!-- Move windows -->
+    <keybind key="W-KP_5">
+      <!-- Center window (size will change) -->
+      <action name="UnmaximizeFull"/>
+      <action name="Raise"/>
+      <action name="MoveResizeTo">
+        <x>center</x>
+        <y>center</y>
+        <width>75%</width>
+        <height>75%</height>
+      </action>
+    </keybind>
+    <keybind key="W-A-Right">
+      <!-- Move to Right edge -->
+      <action name="MoveToEdge">
+        <direction>east</direction>
+      </action>
+    </keybind>
+    <keybind key="W-A-Left">
+      <!-- Move to Left edge -->
+      <action name="MoveToEdge">
+        <direction>west</direction>
+      </action>
+    </keybind>
+    <keybind key="W-A-Up">
+      <!-- Move to Top edge -->
+      <action name="MoveToEdge">
+        <direction>north</direction>
+      </action>
+    </keybind>
+    <keybind key="W-A-Down">
+      <!-- Move to Bottom edge -->
+      <action name="MoveToEdge">
+        <direction>south</direction>
+      </action>
+    </keybind>
+    <!-- Move to corner -->
+    <keybind key="W-A-KP_9">
+      <!-- put the window in the top right corner -->
+      <action name="Raise"/>
+      <action name="MoveResizeTo">
+        <x>-0</x>
+        <y>0</y>
+      </action>
+    </keybind>
+    <keybind key="W-A-KP_3">
+      <!-- put the window in the bottom right corner -->
+      <action name="Raise"/>
+      <action name="MoveResizeTo">
+        <x>-0</x>
+        <y>-0</y>
+      </action>
+    </keybind>
+    <keybind key="W-A-KP_1">
+      <!-- put the window in the bottom left corner -->
+      <action name="Raise"/>
+      <action name="MoveResizeTo">
+        <x>0</x>
+        <y>-0</y>
+      </action>
+    </keybind>
+    <keybind key="W-A-KP_7">
+      <!-- put the window in the top left corner -->
+      <action name="Raise"/>
+      <action name="MoveResizeTo">
+        <x>0</x>
+        <y>0</y>
+      </action>
+    </keybind>
+    <keybind key="XF86MonBrightnessUp">
+      <action name="Execute">
+        <command>xbacklight -inc 5</command>
+      </action>
+    </keybind>
+    <keybind key="XF86MonBrightnessDown">
+      <action name="Execute">
+        <command>xbacklight -dec 5</command>
+      </action>
+    </keybind>
+  </keyboard>
+  <mouse>
+    <dragThreshold>1</dragThreshold>
+    <doubleClickTime>500</doubleClickTime>
+    <screenEdgeWarpTime>0</screenEdgeWarpTime>
+    <screenEdgeWarpMouse>false</screenEdgeWarpMouse>
+    <context name="Frame">
+      <mousebind button="W-Left" action="Press">
+        <action name="Focus"/>
+        <action name="Raise"/>
+      </mousebind>
+      <mousebind button="W-Left" action="Click">
+        <action name="Unshade"/>
+      </mousebind>
+      <mousebind button="W-Left" action="Drag">
+        <action name="Move"/>
+      </mousebind>
+      <mousebind button="W-Right" action="Press">
+        <action name="Focus"/>
+        <action name="Raise"/>
+        <action name="Unshade"/>
+      </mousebind>
+      <mousebind button="W-Right" action="Drag">
+        <action name="Resize"/>
+      </mousebind>
+      <mousebind button="W-Middle" action="Press">
+        <action name="Lower"/>
+        <action name="FocusToBottom"/>
+        <action name="Unfocus"/>
+      </mousebind>
+    </context>
+    <context name="Titlebar">
+      <mousebind button="Left" action="Drag">
+        <action name="Move"/>
+      </mousebind>
+      <mousebind button="Left" action="DoubleClick">
+        <action name="ToggleMaximizeFull"/>
+      </mousebind>
+    </context>
+    <context name="Top">
+      <mousebind button="Left" action="Drag">
+        <action name="Resize">
+          <edge>top</edge>
+        </action>
+      </mousebind>
+    </context>
+    <context name="Left">
+      <mousebind button="Left" action="Drag">
+        <action name="Resize">
+          <edge>left</edge>
+        </action>
+      </mousebind>
+    </context>
+    <context name="Right">
+      <mousebind button="Left" action="Drag">
+        <action name="Resize">
+          <edge>right</edge>
+        </action>
+      </mousebind>
+    </context>
+    <context name="Bottom">
+      <mousebind button="Left" action="Drag">
+        <action name="Resize">
+          <edge>bottom</edge>
+        </action>
+      </mousebind>
+    </context>
+    <context name="TRCorner BRCorner TLCorner BLCorner">
+      <mousebind button="Left" action="Press">
+        <action name="Focus"/>
+        <action name="Raise"/>
+        <action name="Unshade"/>
+      </mousebind>
+      <mousebind button="Left" action="Drag">
+        <action name="Resize"/>
+      </mousebind>
+    </context>
+    <context name="Client">
+      <mousebind button="Left" action="Press">
+        <action name="Focus"/>
+        <action name="Raise"/>
+      </mousebind>
+      <mousebind button="Middle" action="Press">
+        <action name="Focus"/>
+        <action name="Raise"/>
+      </mousebind>
+      <mousebind button="Right" action="Press">
+        <action name="Focus"/>
+        <action name="Raise"/>
+      </mousebind>
+    </context>
+    <context name="Icon">
+      <mousebind button="Left" action="Press">
+        <action name="Focus"/>
+        <action name="Raise"/>
+        <action name="Unshade"/>
+      </mousebind>
+      <mousebind button="Right" action="Press">
+        <action name="Focus"/>
+        <action name="Raise"/>
+      </mousebind>
+    </context>
+    <context name="AllDesktops">
+      <mousebind button="Left" action="Press">
+        <action name="Focus"/>
+        <action name="Raise"/>
+        <action name="Unshade"/>
+      </mousebind>
+      <mousebind button="Left" action="Click">
+        <action name="ToggleOmnipresent"/>
+      </mousebind>
+    </context>
+    <context name="Shade">
+      <mousebind button="Left" action="Press">
+        <action name="Focus"/>
+        <action name="Raise"/>
+      </mousebind>
+      <mousebind button="Left" action="Click">
+        <action name="ToggleShade"/>
+      </mousebind>
+    </context>
+    <context name="Iconify">
+      <mousebind button="Left" action="Press">
+        <action name="Focus"/>
+        <action name="Raise"/>
+      </mousebind>
+      <mousebind button="Left" action="Click">
+        <action name="Iconify"/>
+      </mousebind>
+    </context>
+    <context name="Maximize">
+      <mousebind button="Left" action="Press">
+        <action name="Focus"/>
+        <action name="Raise"/>
+        <action name="Unshade"/>
+      </mousebind>
+      <mousebind button="Middle" action="Press">
+        <action name="Focus"/>
+        <action name="Raise"/>
+        <action name="Unshade"/>
+      </mousebind>
+      <mousebind button="Right" action="Press">
+        <action name="Focus"/>
+        <action name="Raise"/>
+        <action name="Unshade"/>
+      </mousebind>
+      <mousebind button="Left" action="Click">
+        <action name="ToggleMaximize"/>
+      </mousebind>
+      <mousebind button="Middle" action="Click">
+        <action name="ToggleMaximize">
+          <direction>vertical</direction>
+        </action>
+      </mousebind>
+      <mousebind button="Right" action="Click">
+        <action name="ToggleMaximize">
+          <direction>horizontal</direction>
+        </action>
+      </mousebind>
+    </context>
+    <context name="Close">
+      <mousebind button="Left" action="Press">
+        <action name="Focus"/>
+        <action name="Raise"/>
+        <action name="Unshade"/>
+      </mousebind>
+      <mousebind button="Left" action="Click">
+        <action name="Close"/>
+      </mousebind>
+    </context>
+  </mouse>
+  <applications>
+    <application class="*">
+      <decor>no</decor>
+    </application>
+  </applications>
+  <dock>
+    <position>TopLeft</position>
+    <floatingX>0</floatingX>
+    <floatingY>0</floatingY>
+    <stacking>Above</stacking>
+    <direction>Vertical</direction>
+    <noStrut>no</noStrut>
+    <autoHide>no</autoHide>
+    <hideDelay>300</hideDelay>
+    <showDelay>300</showDelay>
+  </dock>
+</openbox_config>
