@@ -43,10 +43,13 @@
   (getenv
    (if (equal system-type 'windows-nt) "USERNAME" "USER")))
 
-(message "Prelude is powering up... Be patient, Master %s!" current-user)
+(message "Welcome %s!" current-user)
 
 (when (version< emacs-version "24.4")
-  (error "Prelude requires at least GNU Emacs 24.4, but you're running %s" emacs-version))
+  (error "This setup requires at least GNU Emacs 24.4, but you're running %s" emacs-version))
+
+(load-file "~/.emacs.d/color-theme/themes/sanityinc-tomorrow-blue-theme.el")
+(color-theme-sanityinc-tomorrow)
 
 ;; Always load newest byte code
 (setq load-prefer-newer t)
@@ -102,7 +105,7 @@ by Prelude.")
   (message "Loading personal configuration files in %s..." prelude-personal-preload-dir)
   (mapc 'load (directory-files prelude-personal-preload-dir 't "^[^#\.].*el$")))
 
-(message "Loading Prelude's core...")
+(message "Loading core...")
 
 ;; the core stuff
 (require 'prelude-packages)
@@ -117,7 +120,7 @@ by Prelude.")
 (when (eq system-type 'darwin)
   (require 'prelude-macos))
 
-(message "Loading Prelude's modules...")
+(message "Loading modules...")
 
 ;; the modules
 (if (file-exists-p prelude-modules-file)
@@ -133,7 +136,7 @@ by Prelude.")
   (message "Loading personal configuration files in %s..." prelude-personal-dir)
   (mapc 'load (directory-files prelude-personal-dir 't "^[^#\.].*el$")))
 
-(message "Prelude is ready to do thy bidding, Master %s!" current-user)
+(message "Ready to do thy bidding, %s!" current-user)
 
 ;; Patch security vulnerability in Emacs versions older than 25.3
 (when (version< emacs-version "25.3")
