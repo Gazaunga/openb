@@ -1,1 +1,5 @@
 emacs --daemon
+xrandr --output VGA-1 --mode 1920x1080 --rate 60.0 &
+dunst -fn "$DUNST_FONT" -geometry "$DUNST_SIZE" &
+compton -b
+nitrogen --restore &
