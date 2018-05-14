@@ -1,0 +1,324 @@
+; vim:ft=cfg
+;     _____
+;    (, /   )    /)      /)
+;     _/__ / ___//      (/_ _   __
+;     /     (_)(/_ (_/_/_) (_(_/ (_
+;  ) /            .-/
+; (_/            (_/
+
+[colors]
+foreground = ${xrdb:color0}
+background = ${xrdb:color7}
+
+red     = ${xrdb:color1}
+orange  = ${xrdb:color9}
+yellow  = ${xrdb:color3}
+green   = ${xrdb:color2}
+cyan    = ${xrdb:color6}
+blue    = ${xrdb:color4}
+magenta = ${xrdb:color5}
+white   = ${xrdb:color7}
+
+[global/wm]
+margin-top        = 0
+margin-bottom     = 0
+override-redirect = true
+
+[bar/base]
+monitor = ${env:MONITOR:eDP1}
+width    = 80%
+height   = 32
+offset-x = 10%
+offset-y = 8
+
+bottom = true
+
+background = ${xrdb:color0}
+foreground = ${xrdb:color7}
+
+font-0 = scientifica:size=8:antialias=true;2
+font-1 = lemon:pixelsize=8;2
+font-2 = Siji:size=9;2
+
+modules-left   = date1 battery volume backlight cpu ram
+modules-center = workspace2bwm
+modules-right  = spotify music essid
+
+padding-left        = 2
+padding-right       = 2
+module-margin-left  = 1
+module-margin-right = 0
+
+[module/network]
+type          = internal/network
+interface     = wlp6s0
+ping-interval = 3
+
+[module/backlight]
+type = internal/backlight
+card = intel_backlight
+enable-scroll = false
+
+format = <label>
+format-padding    = 1
+
+label=%percentage%%
+label-padding = 1
+
+format-prefix = 
+format-prefix-foreground = ${colors.yellow}
+
+[module/volume]
+type = internal/volume
+
+format-volume = <ramp-volume><label-volume>
+
+format-volume-padding    = 1
+
+label-volume-padding = 1
+
+module-margin-right = 0
+ramp-volume-0       = 
+ramp-volume-1       = 
+ramp-volume-2       = 
+
+ramp-volume-foreground = ${colors.green}
+
+format-muted = <label-muted>
+format-muted-padding = 1
+
+label-muted            = muted
+label-muted-padding     = 1
+format-muted-prefix = 
+format-muted-prefix-foreground = ${colors.green}
+
+[module/date1]
+type                     = internal/date
+interval                 = 1
+date                     = " %I:%M"
+format-prefix            = 
+format-prefix-foreground = ${colors.red}
+format-padding           = 1
+
+[module/powermenu]
+type = custom/menu
+
+label-open                 = 
+label-open-foreground      = ${colors.red}
+label-open-padding         = 2
+label-close                = ✕
+label-close-padding        = 2
+label-close-foreground     = $[colors.red]
+label-separator            = |
+label-separator-foreground = #666666
+
+menu-0-0      = reboot
+menu-0-0-exec = menu-open-1
+menu-0-1      = poweroff
+menu-0-1-exec = menu-open-2
+menu-0-2      = logout
+menu-0-2-exec = menu-open-3
+
+menu-1-0      = ✕
+menu-1-0-exec = menu-open-0
+menu-1-1      = ✓
+menu-1-1-exec = systemctl reboot
+
+menu-2-0      = ✓
+menu-2-0-exec = systemctl poweroff
+menu-2-1      = ✕
+menu-2-1-exec = menu-open-0
+
+menu-3-0      = ✓
+menu-3-0-exec = herbstclient quit
+menu-3-1      = ✕
+menu-3-1-exec = menu-open-0
+
+[module/cpu]
+type                     = internal/cpu
+label                    = %percentage-core1%%
+label-padding            = 1
+format-prefix            = ""
+format-prefix-foreground = ${colors.magenta}
+format-padding           = 1
+
+[module/ram]
+type     = internal/memory
+interval = 3
+
+format           = <label>
+format-padding   = 1
+label            = "%percentage_used%%"
+label-padding    = 1
+
+format-prefix = 
+format-prefix-foreground = ${colors.cyan}
+
+[module/previous]
+type = custom/text
+
+content = ""
+content-background = ${xrdb:color0}
+content-foreground = ${xrdb:color15}
+content-padding = 0
+
+click-left = mpc previous
+
+[module/playpause]
+type = custom/script
+
+exec = sh ~/.config/polybar/playpause.sh
+
+interval= 1
+
+label = %output%
+label-background = ${xrdb:color0}
+label-foreground = ${xrdb:color15}
+label-padding = 0
+
+click-left = mpc toggle
+
+[module/next]
+type = custom/text
+
+content = ""
+
+content-background = ${xrdb:color0}
+content-foreground = ${xrdb:color15}
+content-padding = 0
+
+click-left = mpc next
+
+[module/music]
+type = internal/mpd
+
+host = 127.0.0.1
+port = 6600
+
+interval = 2
+
+format-online = <label-song>
+format-online-padding = 2
+
+label-song         = " %title% - %artist%"
+label-song-maxlen = 45
+label-song-padding = 1
+
+[module/spotify]
+type = custom/script
+interval = 2
+
+format = <label>
+format-prefix-foreground = ${colors.red}
+label = %output:0:45:...%
+format-padding = 1
+
+exec = ~/.config/polybar/mpris.sh
+click-left = playerctl previous
+click-middle = playerctl play-pause
+click-right = playerctl next
+
+[module/workspace2bwm]
+type              = custom/script
+exec              = 2bws.sh
+interval          = 0.01
+format-padding    = 1
+scroll-up         = exec wscycle.sh -f
+scroll-down       = exec wscycle.sh -r
+
+[module/bspwm]
+type = internal/bspwm
+
+pin-workspaces = true
+inline-mode = false
+enable-click = true
+enable-scroll = false
+reverse-scroll = false
+fuzzy-match = false
+
+format-background = ${xrdb:color0}
+format-padding = 2
+
+label-focused = ✕
+label-focused-background = ${xrdb:color0}
+# label-focused-foreground = ${xrdb:foreground}
+label-focused-padding    = 1
+
+label-occupied = •
+label-occupied-background = ${xrdb:color0}
+# label-occupied-foreground = ${xrdb:foreground}
+label-occupied-padding    = 1
+
+label-urgent = •
+label-urgent-background = ${xrdb:color0}
+label-urgent-foreground = ${colors.red}
+label-urgent-padding    = 1
+
+label-empty = •
+label-empty-background = ${xrdb:color0}
+label-empty-foreground = ${xrdb:color11}
+label-empty-padding    = 1
+
+[module/essid]
+inherit = module/network
+
+format-connected = <label-connected>
+
+format-connected-prefix            = ""
+format-connected-prefix-padding    = 0
+format-connected-prefix-foreground = ${colors.magenta}
+
+label-connected            = "%essid%"
+label-connected-padding    = 1
+
+format-disconnected = <label-disconnected>
+
+format-disconnected-prefix            = ""
+format-disconnected-prefix-padding    = 0
+format-disconnected-prefix-foreground = ${colors.magenta}
+
+label-disconnected            = "disconnected"
+label-disconnected-padding    = 1
+
+[module/battery]
+type          = internal/battery
+full-at       = 98
+battery       = BAT0
+adapter       = AC0
+poll-interval = 5
+
+format-charging = <label-charging>
+format-charging-padding = 1
+
+format-charging-prefix            = ""
+format-charging-prefix-background = ${xrdb:color0}
+format-charging-prefix-foreground = ${xrdb:color4}
+format-charging-prefix-padding    = 0
+
+label-charging            = "%percentage%%"
+label-charging-background = ${xrdb:color0}
+label-charging-padding    = 1
+
+format-discharging = <label-discharging>
+format-discharging-padding = 1
+
+format-discharging-prefix            = ""
+format-discharging-prefix-background = ${xrdb:color0}
+format-discharging-prefix-foreground = ${xrdb:color4}
+format-discharging-prefix-padding    = 0
+
+label-discharging            = "%percentage%%"
+label-discharging-background = ${xrdb:color0}
+label-discharging-padding    = 1
+
+format-full = <label-full>
+format-full-padding = 1
+
+format-full-prefix            = ""
+format-full-prefix-background = ${xrdb:color0}
+format-full-prefix-foreground = ${xrdb:color4}
+format-full-prefix-padding    = 0
+
+label-full            = "%percentage%%"
+label-full-background = ${xrdb:color0}
+label-full-padding    = 1
